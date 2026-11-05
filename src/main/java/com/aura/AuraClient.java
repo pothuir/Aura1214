@@ -24,7 +24,7 @@ public class AuraClient implements ClientModInitializer {
                 "key.aura1214.toggle",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_R,
-                KeyBinding.Category.MISC
+                KeyBinding.MISC_CATEGORY
             )
         );
 
