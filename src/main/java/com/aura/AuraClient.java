@@ -1,14 +1,14 @@
+
 package com.aura;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
+import net.minecraft.text.Text;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
@@ -32,6 +32,15 @@ public class AuraClient implements ClientModInitializer {
 
             while (toggle.wasPressed()) {
                 enabled = !enabled;
+
+                if (client.player != null) {
+                    client.player.sendMessage(
+                        Text.literal(enabled
+                            ? "Aura1214: ON"
+                            : "Aura1214: OFF"),
+                        true
+                    );
+                }
             }
 
             if (!enabled || client.player == null ||
@@ -45,7 +54,8 @@ public class AuraClient implements ClientModInitializer {
                 if (!(entity instanceof LivingEntity living)) continue;
                 if (living == client.player || !living.isAlive()) continue;
 
-                double distance = client.player.squaredDistanceTo(living);
+                double distance =
+                    client.player.squaredDistanceTo(living);
 
                 if (distance <= closest) {
                     closest = distance;
@@ -64,4 +74,4 @@ public class AuraClient implements ClientModInitializer {
             }
         });
     }
-                  }
+}
