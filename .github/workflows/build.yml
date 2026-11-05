@@ -2,9 +2,9 @@
 name: Build Aura1214
 
 on:
-  workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,10 +20,10 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Build mod
+      - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-        gradle-version: '8.12.1'
+          gradle-version: '8.12.1'
 
       - name: Run build
         run: gradle build
@@ -33,4 +33,3 @@ jobs:
         with:
           name: Aura1214
           path: build/libs/*.jar
-          
