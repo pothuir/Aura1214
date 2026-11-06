@@ -1,19 +1,16 @@
 {
   "schemaVersion": 1,
   "id": "aura1214",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "Aura1214",
-  "description": "Singleplayer combat testing mod",
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "com.aura.AuraClient"
-    ]
+    "client": ["com.aura.Auraclient"]
   },
   "depends": {
-    "fabricloader": ">=0.16.10",
-    "minecraft": "1.21.4",
-    "fabric-api": "*",
-    "java": ">=21"
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
   }
 }
